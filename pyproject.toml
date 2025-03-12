@@ -1,0 +1,54 @@
+[build-system]
+requires = ['setuptools', 'setuptools-scm', 'wheel']
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "node-and-date"
+write_to = "src/_version.py"
+
+[tool.black]
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.venv
+  | build
+  | dist
+  | __pycache__
+  | \.tox
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+ensure_newline_before_comments = true
+line_length = 88
+known_first_party = "ps3"
+skip = ["*.eggs/*", "*.git/*", "*.venv/*", "build/*", "dist/*", "__pycache__/*"]
+default_section = 'THIRDPARTY'
+
+[tool.mypy]
+python_version = '3.8'
+ignore_missing_imports = true
+no_implicit_optional = true
+check_untyped_defs = true
+strict = true
+exclude = "^tests/|^docs/|^venv/"
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+
+[tool.docformatter]
+pre-summary-newline = true
+recursive = true
+wrap-descriptions = 88
+wrap-summaries = 88
+
+[tool.pytest.ini_options]
+addopts = "--cov=src/feature_engineering --cov-report=html"
+pythonpath = "."
+filterwarnings = [
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning"
+]
