@@ -1,4 +1,4 @@
-# Bike Sharing Demand Forecasting
+# Bicycle rental demand forecast
 
 This repository contains an exploratory project focused on predicting hourly bike sharing demand using weather and time-related features. The project showcases data processing, feature engineering, and model development using interpretable and scalable machine learning approaches.
 
